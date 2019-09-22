@@ -1,13 +1,16 @@
 import { arrayFruits, arrayColors } from '../array';
 
-describe('Comprobar si existe un elemento', () => {
-  test('Tiene una banana', () => {
+describe('Comprobar arrays', () => {
+  test('Existe banana', () => {
     expect(arrayFruits()).toContain('banana');
   });
-  test('No contiene una banana', () => {
+  test('No existe banana', () => {
     expect(arrayFruits()).not.toContain('grape');
   });
-  test('Comprobar tamaño de un arreglo', () => {
+  test('Check array length', () => {
     expect(arrayFruits()).toHaveLength(6);
   });
+  test('Has blue', () => {
+    expect(arrayColors()).toContain('blue');
+  })
 });
