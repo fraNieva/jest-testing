@@ -11,6 +11,17 @@ describe('Testing Async/Await', () => {
       expect(data.name).toEqual('Rick Sanchez');
     });
   });
+
+  test('Make an api request with error', async () => {
+    const apiError = 'http://httpstat.us/404';
+    const request = getDataFromApi(apiError);
+    await expect(request).rejects.toEqual(Error('Request failed with status code 404'));
+  });
+
+  test('Resolves a Hello', async () => {
+    await expect(Promise.resolve('Hello')).resolves.toBe('Hello');
+    await expect(Promise.reject('Error')).rejects.toBe('Error');
+  });
 });
 
 describe('Testing Async/Await', () => {
@@ -19,9 +30,9 @@ describe('Testing Async/Await', () => {
     let getRick = 'https://rickandmortyapi.com/api/character/1';
    
     const data = await getDataFromApi(api);
-    expect(data).toBeGreaterThan(0);
+    expect(data.results.length).toBeGreaterThan(0);
 
     const Rick = await getDataFromApi(getRick);
-    expect(Rick).toEqual('Rick Sanchez');
+    expect(Rick.name).toEqual('Rick Sanchez');
   });
 });
