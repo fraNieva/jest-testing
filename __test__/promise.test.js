@@ -8,4 +8,12 @@ describe('Testing promises', () => {
         done();
       });
   });
+
+  test('Resolves a hello', () => {
+    return expect(Promise.resolve('Hello!')).resolves.toBe('Hello!');
+  });
+
+  test('Reject with an error', () => {
+    return expect(Promise.reject('Errror')).rejects.toBe('Errror');
+  });
 });
